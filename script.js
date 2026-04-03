@@ -9,10 +9,27 @@ const height = 500;
 const Points = [];
 
 document.addEventListener('DOMContentLoaded', function (){
-    //setup canvas
-    canvas.setAttribute('width', width);
-    canvas.setAttribute('height', height);
+    function init(){
+        //setup canvas
+        canvas.setAttribute('width', width);
+        canvas.setAttribute('height', height);
 
-    let point_1 = new Point(100,100,1);
-    point_1.draw(ctx);
+        let point_1 = new Point(100,100,1);
+        point_1.draw(ctx);
+        Points.push(point_1);
+    }
+
+    function update(){
+        ctx.clearRect(0, 0, width, height);
+
+
+        let point_1 = Points[0];
+        point_1.x = point_1.x + 1;
+        point_1.draw(ctx);
+
+
+        requestAnimationFrame(update);
+    }
+    init()
+    update()
 })
