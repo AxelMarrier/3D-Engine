@@ -1,5 +1,7 @@
 //import
 import { Point } from './class/point.js';
+import { Triangle } from './class/triangle.js';
+import { Vecteur } from './class/vecteur.js';
 
 //constantes
 const canvas = document.querySelector('canvas');
@@ -14,9 +16,15 @@ document.addEventListener('DOMContentLoaded', function (){
         canvas.setAttribute('width', width);
         canvas.setAttribute('height', height);
 
-        let point_1 = new Point(100,100,1);
+        let point_1 = new Point(new Vecteur(100,100,0));
+        let point_2 = new Point(new Vecteur(300,100,0));
+        let point_3 = new Point(new Vecteur(100,300,0));
         point_1.draw(ctx);
-        Points.push(point_1);
+        point_2.draw(ctx);
+        point_3.draw(ctx);
+
+        let triangle_1 = new Triangle(point_1, point_2, point_3);
+        triangle_1.draw(ctx);
     }
 
     function update(){
@@ -31,5 +39,5 @@ document.addEventListener('DOMContentLoaded', function (){
         requestAnimationFrame(update);
     }
     init()
-    update()
+    //update()
 })
